@@ -5,6 +5,6 @@ import react from '@vitejs/plugin-react'
 // vite.config.js
 export default defineConfig({
   base: "/IntroReact/Clase1/ejemplo_props/",
-  plugins: [react()],
+  //plugins: [react()],
 });
 
