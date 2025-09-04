@@ -36,10 +36,19 @@ function InventoryManager() {
   const [state, dispatch] = useReducer(reducer, initialState);
   const inputRef = useRef(null);
 
+  // 🔹 Aquí van tus useCallback
+  const handleIncrement = useCallback((id) => {
+    dispatch({ type: "increment", id });
+  }, []);
+
+  const handleDecrement = useCallback((id) => {
+    dispatch({ type: "decrement", id });
+  }, []);
+
   const handleAddProduct = () => {
     if (inputRef.current.value.trim() !== "") {
       dispatch({ type: "add", name: inputRef.current.value });
-      inputRef.current.value = ""; // Limpiar input
+      inputRef.current.value = ""; // limpiar input
     }
   };
 
@@ -53,8 +62,8 @@ function InventoryManager() {
         {state.products.map((product) => (
           <li key={product.id}>
             {product.name} - Cantidad: {product.quantity}
-            <button onClick={() => dispatch({ type: "increment", id: product.id })}>+</button>
-            <button onClick={() => dispatch({ type: "decrement", id: product.id })}>-</button>
+            <button onClick={() => handleIncrement(product.id)}>+</button>
+            <button onClick={() => handleDecrement(product.id)}>-</button>
             <button onClick={() => dispatch({ type: "remove", id: product.id })}>Eliminar</button>
           </li>
         ))}
