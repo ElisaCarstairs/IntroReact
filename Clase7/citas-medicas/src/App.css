@@ -1,0 +1,70 @@
+div {
+  width: 95%;
+  margin: 50px auto;
+  padding: 30px;
+  background-color: rgb(240, 229, 247);
+  border-radius: 10px;
+  font-size: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  text-align: center;
+}
+
+/* Links arriba */
+nav {
+  margin-bottom: 20px;
+  font-family: Macondo;
+}
+input {
+  font-family: Montserrat Alternates;
+  display: block;
+  margin-bottom: 10px;
+  padding: 5px;
+  width: 90%;
+}
+
+button {
+  margin: 5px 5px 5px 0;
+  padding: 8px 12px;
+  border: none;
+  border-radius: 5px;
+  background-color: #bec3ff;
+  color: rgb(0, 0, 0);
+  cursor: pointer;
+  border-color: black;
+}
+
+button:hover {
+  background-color: #adffe6;
+}
+
+/* Títulos */
+h1 {
+  font-family: Metamorphous;
+  font-size: 34px;
+  color: rgb(6, 5, 3);
+}
+
+h2 {
+  font-family: Quicksand;
+}
+
+h3 {
+  font-family: Roboto;
+  font-size: 24px;
+  color: rgb(14, 19, 46);
+}
+ul {
+  font-family: Quicksand;
+  font-size: 18px;
+  color: rgb(12, 59, 48);
+  margin: 5px 0;
+}
+p {
+  font-family: Roboto;
+  font-size: 20px;
+  color: rgb(12, 59, 48);
+  margin: 5px 0;
+  width: 90%;
+}
