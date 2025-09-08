@@ -1,0 +1,103 @@
+/* Estilos para el formulario de nuevo post tipo Twitter */
+.newpost-container {
+  display: flex;
+  align-items: flex-start;
+  padding: 16px 20px;
+  border-bottom: 1px solid #e6ecf0;
+  background: #fff;
+}
+
+.newpost-avatar {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  margin-right: 16px;
+  object-fit: cover;
+}
+
+.newpost-content {
+  flex: 1;
+}
+
+.newpost-textarea {
+  width: 100%;
+  min-height: 60px;
+  border: none;
+  resize: none;
+  font-size: 16px;
+  color: #14171a;
+  background: transparent;
+  outline: none;
+  margin-bottom: 12px;
+}
+
+.newpost-actions {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.newpost-button {
+  background: #1da1f2;
+  color: #fff;
+  border: none;
+  border-radius: 999px;
+  padding: 8px 20px;
+  font-weight: bold;
+  cursor: pointer;
+  font-size: 15px;
+  transition: background 0.2s;
+}
+
+.newpost-button:disabled {
+  background: #aab8c2;
+  cursor: not-allowed;
+}
+
+.newpost-button:hover:not(:disabled) {
+  background: #1991da;
+}
+
+
+/* --- ESTILOS PARA POST --- */
+.post-container {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  background: white;
+  padding: 16px;
+  margin-bottom: 12px;
+  border-radius: 12px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+  transition: background 0.2s;
+}
+
+.post-container:hover {
+  background: #f5f5f5;
+}
+
+.post-avatar {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.post-content {
+  flex: 1;
+}
+
+.post-header {
+  font-weight: bold;
+  margin-bottom: 6px;
+  color: #1c1c1c;
+}
+
+.post-author {
+  color: #1b95e0;
+}
+
+.post-text {
+  color: #333;
+  font-size: 16px;
+  line-height: 20px;
+}

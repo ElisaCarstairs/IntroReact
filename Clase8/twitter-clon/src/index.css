@@ -1,0 +1,52 @@
+body {
+  font-family: Quicksand, sans-serif;
+  margin: 0;
+  padding: 0;
+  overflow: hidden; /* Evita scroll en el body */
+}
+
+.main {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: stretch;
+  height: 100vh; /* Toda la altura de la ventana */
+}
+
+/* LEFT SIDEBAR FIJA */
+.home-leftSideBar {
+  width: 250px; /* tamaño fijo */
+  background: #fff;
+  border-right: #e5e5e5 solid 1px;
+  position: sticky; /* se queda fija */
+  top: 0;
+  height: 100vh;
+  padding: 20px;
+}
+
+/* CONTENIDO Y RIGHT SIDEBAR CON SCROLL OCULTO */
+.home-content,
+.home-rightSideBar {
+  height: 100vh;
+  overflow-y: scroll; /* permite scroll */
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE y Edge */
+}
+
+.home-content::-webkit-scrollbar,
+.home-rightSideBar::-webkit-scrollbar {
+  display: none; /* Chrome, Safari */
+}
+
+.home-content {
+  flex: 1;
+  background-color: #f5f5f5;
+  padding: 20px;
+}
+
+.home-rightSideBar {
+  width: 300px;
+  background: #fafafa;
+  border-left: #e5e5e5 solid 1px;
+  padding: 20px;
+}

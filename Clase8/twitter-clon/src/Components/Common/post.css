@@ -1,0 +1,70 @@
+/* Estilos para cada post tipo Twitter */
+.post-container {
+  display: flex;
+  align-items: flex-start;
+  padding: 16px 20px;
+  border-bottom: 1px solid #e6ecf0;
+  background: #fff;
+  transition: background 0.2s;
+}
+
+.post-container:hover {
+  background: #f5f8fa;
+}
+
+.post-avatar {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  margin-right: 16px;
+  object-fit: cover;
+}
+
+.post-content {
+  flex: 1;
+}
+
+.post-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 15px;
+}
+
+.post-author {
+  font-weight: bold;
+  color: #14171a;
+}
+
+.post-username {
+  color: #657786;
+}
+
+.post-date {
+  color: #657786;
+  font-size: 13px;
+}
+
+.post-text {
+  margin: 8px 0;
+  font-size: 16px;
+  color: #14171a;
+  line-height: 1.5;
+}
+
+.post-actions {
+  display: flex;
+  gap: 32px;
+  margin-top: 8px;
+}
+
+.post-action {
+  color: #657786;
+  cursor: pointer;
+  font-size: 15px;
+  transition: color 0.2s;
+}
+
+.post-action:hover {
+  color: #1da1f2;
+}
