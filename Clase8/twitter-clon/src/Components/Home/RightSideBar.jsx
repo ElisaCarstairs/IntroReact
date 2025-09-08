@@ -1,58 +1,79 @@
-import { useState, useEffect } from "react";
-import './newpost.css'; // Usando el CSS general
+import { useState } from "react";
+import "./newpost.css";
 
 export default function RightSideBar({ user }) {
-  const [posts, setPosts] = useState([]);
-  const [suggestedUsers, setSuggestedUsers] = useState([]);
+  // Trending topics mock
+  const trendingMock = [
+    "#ReactJS",
+    "#JavaScript",
+    "#Vite",
+    "#Frontend",
+    "#IA2025"
+  ];
 
-  // Cargar posts desde localStorage
-  useEffect(() => {
-    const savedPosts = localStorage.getItem("posts");
-    const saved = savedPosts ? JSON.parse(savedPosts) : [];
-    setPosts(saved);
-  }, []);
+  // Mock de usuarios a seguir
+  const usersMock = [
+    "Elisa_Carstairs",
+    "WilliamHerondale",
+    "Cassandra_Clare",
+    "Hari_Seldon",
+    "Isaac_Asimov",
+    "Gaal_Dornick"
+  ];
 
-  // Generar lista de usuarios sugeridos de manera aleatoria
-  useEffect(() => {
-    const uniqueAuthors = [...new Set(posts.map(p => p.author))];
-    const suggestions = uniqueAuthors
-      .filter(a => a !== (user?.username || ""))
-      .sort(() => Math.random() - 0.5)
-      .slice(0, 5)
-      .map(author => ({
-        username: author,
-        avatar: `https://api.dicebear.com/7.x/avataaars/svg?seed=${author}`
-      }));
-    setSuggestedUsers(suggestions);
-  }, [posts, user]);
+  // Mock de noticias
+  const newsMock = [
+    { title: "React lanza nueva versión", url: "#" },
+    { title: "JavaScript sigue dominando el mundo web", url: "#" },
+    { title: "Aprende Next.js en 30 días", url: "#" },
+    { title: "Tendencias en IA para 2025", url: "#" },
+    { title: "Frontend moderno: React + Vite", url: "#" }
+  ];
+
+  // Elegir 3 usuarios aleatorios para sugerir
+  const shuffledUsers = usersMock.sort(() => 0.5 - Math.random()).slice(0, 3);
 
   return (
-    <div className="right-sidebar" style={{ width: '20%', padding: '20px', display: 'flex', flexDirection: 'column', gap: '24px', backgroundColor: '#f8f9fa' }}>
-      {/* Trending */}
-      <div className="trending">
-        <h3>Trending</h3>
+    <div className="right-sidebar">
+      {/* Trending topics */}
+      <div className="sidebar-section">
+        <h3>Trending Topics</h3>
         <ul>
-          {['ReactJS', 'JavaScript', 'OpenAI', 'NodeJS', 'CSS'].map(tag => (
-            <li key={tag} style={{ padding: '6px 12px', borderRadius: '999px', cursor: 'pointer', marginBottom: '6px', backgroundColor: '#e8f5fe', color: '#1da1f2' }}>
-              #{tag}
+          {trendingMock.map((topic, index) => (
+            <li key={index}>
+              <a href="#">{topic}</a>
             </li>
           ))}
         </ul>
       </div>
 
-      {/* Usuarios sugeridos */}
-      <div className="suggested-users">
-        <h3>Quién seguir</h3>
-        <ul style={{ listStyle: 'none', padding: 0 }}>
-          {suggestedUsers.map(u => (
-            <li key={u.username} style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '12px' }}>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
-                <img src={u.avatar} alt={u.username} style={{ width: '40px', height: '40px', borderRadius: '50%' }} />
-                <span>@{u.username}</span>
-              </div>
-              <button style={{ backgroundColor: '#1da1f2', color: '#fff', border: 'none', borderRadius: '999px', padding: '6px 12px', cursor: 'pointer' }}>
-                Seguir
-              </button>
+      {/* Noticias */}
+      <div className="sidebar-section">
+        <h3>Noticias</h3>
+        <ul>
+          {newsMock.map((item, index) => (
+            <li key={index}>
+              <a href={item.url} target="_blank" rel="noopener noreferrer">
+                {item.title}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      {/* A quién seguir */}
+      <div className="sidebar-section">
+        <h3>A quién seguir</h3>
+        <ul>
+          {shuffledUsers.map((username, index) => (
+            <li key={index} className="follow-user">
+              <img
+                src={`https://api.dicebear.com/7.x/avataaars/svg?seed=${username}`}
+                alt={username}
+                className="avatar"
+              />
+              <span>@{username}</span>
+              <button>Seguir</button>
             </li>
           ))}
         </ul>

@@ -1,37 +1,15 @@
 import { useState } from "react";
-import './newpost.css';
+import "./newpost.css";
 
 export default function LeftSideBar({ user, login, logout }) {
-  const [inputUser, setInputUser] = useState("");
-  const [inputPass, setInputPass] = useState("");
-  const [isRegister, setIsRegister] = useState(false);
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState(""); // Para login ficticio
 
   const handleLogin = () => {
-    if (!inputUser.trim() || !inputPass.trim()) return alert("Ingresa usuario y contraseña");
-
-    const users = JSON.parse(localStorage.getItem("users")) || [];
-    const match = users.find(u => u.username === inputUser && u.password === inputPass);
-    if (!match) return alert("Usuario o contraseña incorrectos");
-
-    login(inputUser);
-    setInputUser("");
-    setInputPass("");
-  };
-
-  const handleRegister = () => {
-    if (!inputUser.trim() || !inputPass.trim()) return alert("Ingresa usuario y contraseña");
-
-    const users = JSON.parse(localStorage.getItem("users")) || [];
-    if (users.some(u => u.username === inputUser)) return alert("El usuario ya existe");
-
-    users.push({ username: inputUser, password: inputPass });
-    localStorage.setItem("users", JSON.stringify(users));
-
-    alert("Registro exitoso");
-    login(inputUser); // auto-login
-    setInputUser("");
-    setInputPass("");
-    setIsRegister(false);
+    if (!username.trim() || !password.trim()) return;
+    login(username);
+    setUsername("");
+    setPassword("");
   };
 
   return (
@@ -39,7 +17,7 @@ export default function LeftSideBar({ user, login, logout }) {
       {user ? (
         <div className="sidebar-user">
           <img
-            src={`https://api.dicebear.com/7.x/micah/svg?seed=${user.username}`}
+            src={`https://api.dicebear.com/7.x/avataaars/svg?seed=${user.username}`}
             alt="avatar"
             className="avatar"
           />
@@ -48,28 +26,19 @@ export default function LeftSideBar({ user, login, logout }) {
         </div>
       ) : (
         <div className="login-block">
-          <h3>{isRegister ? "Registro" : "Login"}</h3>
           <input
             type="text"
             placeholder="Usuario"
-            value={inputUser}
-            onChange={(e) => setInputUser(e.target.value)}
+            value={username}
+            onChange={e => setUsername(e.target.value)}
           />
           <input
             type="password"
             placeholder="Contraseña"
-            value={inputPass}
-            onChange={(e) => setInputPass(e.target.value)}
+            value={password}
+            onChange={e => setPassword(e.target.value)}
           />
-          <button onClick={isRegister ? handleRegister : handleLogin}>
-            {isRegister ? "Registrarse" : "Iniciar sesión"}
-          </button>
-          <small
-            style={{ cursor: "pointer", color: "#1da1f2", marginTop: "8px" }}
-            onClick={() => setIsRegister(!isRegister)}
-          >
-            {isRegister ? "¿Ya tienes cuenta? Inicia sesión" : "¿No tienes cuenta? Regístrate"}
-          </small>
+          <button onClick={handleLogin}>Iniciar sesión</button>
         </div>
       )}
 
@@ -80,6 +49,18 @@ export default function LeftSideBar({ user, login, logout }) {
           <li>Perfil</li>
         </ul>
       </nav>
+
+      {/* Footer con términos y derechos reservados */}
+      <div className="sidebar-footer">
+        <a
+          href="https://twitter.com/en/tos"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Términos y condiciones
+        </a>
+        <p>© 2025 Creado por Erika Marina</p>
+      </div>
     </div>
   );
 }

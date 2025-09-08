@@ -1,6 +1,6 @@
 import { useState } from "react";
 import Home from "./Components/Home/Home";
-import Register from "./Pages/Register.jsx";
+import Register from "./Pages/Register";
 
 export default function App() {
   const [user, setUser] = useState(null);
