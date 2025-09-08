@@ -1,3 +1,116 @@
+/* ================= LEFT SIDE BAR ================= */
+
+/* Contenedor principal de la barra lateral */
+.left-sidebar {
+  width: 20%; /* tu modificación */
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px; /* espacio equilibrado entre secciones */
+  background-color: #f8f9fa;
+  box-sizing: border-box;
+}
+
+/* Bloque de usuario logueado */
+.sidebar-user {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+
+.sidebar-user .avatar {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid #1da1f2;
+}
+
+.sidebar-user p {
+  font-weight: bold;
+  font-size: 16px;
+}
+
+.sidebar-user button {
+  background-color: #1dc4f2;
+  color: #fff;
+  border: none;
+  border-radius: 1px;
+  padding: 6px 16px;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 14px;
+  transition: background 0.2s;
+}
+
+.sidebar-user button:hover {
+  background-color: #6d19da;
+}
+
+/* Bloque de login (si no hay usuario) */
+.login-block {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: center;
+}
+
+.login-block input {
+  width: 80%;
+  padding: 8px 12px;
+  border-radius: 999px;
+  border: 1px solid #ccc;
+  outline: none;
+  font-size: 14px;
+}
+
+.login-block input:focus {
+  border-color: #801df2;
+}
+
+.login-block button {
+  background-color: #367bf2;
+  color: #fff;
+  border: none;
+  border-radius: 999px;
+  padding: 6px 16px;
+  font-weight: bold;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background 0.2s;
+  width: 70%;
+  align-items: center;
+}
+
+.login-block button:hover {
+  background-color: #1996da;
+}
+
+/* Menú de navegación */
+.sidebar-menu ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.sidebar-menu li {
+  cursor: pointer;
+  padding: 6px 12px;
+  border-radius: 999px;
+  transition: background 0.2s;
+}
+
+.sidebar-menu li:hover {
+  background-color: #e8f5fe;
+  color: #1da1f2;
+}
+
+/* ================= CONTENIDO Y POSTS ================= */
+
 /* Estilos para el formulario de nuevo post tipo Twitter */
 .newpost-container {
   display: flex;
@@ -56,7 +169,6 @@
 .newpost-button:hover:not(:disabled) {
   background: #1991da;
 }
-
 
 /* --- ESTILOS PARA POST --- */
 .post-container {

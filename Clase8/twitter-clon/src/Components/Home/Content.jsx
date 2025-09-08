@@ -16,8 +16,7 @@ const previousPosts = [
   { id: 10, content: "Detecto patrones en las emociones que ni siquiera ustedes comprenden.", author: "R_Giskard_Reventlov" },
 ];
 
-export default function Content() {
-  // Inicializar posts combinando los guardados con los predefinidos
+export default function Content({ user }) {
   const [posts, setPost] = useState(() => {
     const savedPosts = localStorage.getItem("posts");
     const saved = savedPosts ? JSON.parse(savedPosts) : [];
@@ -28,14 +27,13 @@ export default function Content() {
     return allPosts;
   });
 
-  // Guardar posts en localStorage cada vez que cambien
   useEffect(() => {
     localStorage.setItem("posts", JSON.stringify(posts));
   }, [posts]);
 
   return (
     <div className="home-content">
-      <NewPost posts={posts} setPost={setPost} />
+      <NewPost posts={posts} setPost={setPost} user={user} />
       <Timeline posts={posts} />
     </div>
   );

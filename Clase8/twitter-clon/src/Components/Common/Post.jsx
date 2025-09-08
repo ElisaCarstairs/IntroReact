@@ -1,7 +1,7 @@
 import './post.css';
 
 export default function Post({ id, content, author }) {
-  const avatar = `https://api.dicebear.com/7.x/identicon/svg?seed=${author}`;
+  const avatar = `https://api.dicebear.com/7.x/micah/svg?seed=${author}`;
 
   return (
     <div className="post-container">

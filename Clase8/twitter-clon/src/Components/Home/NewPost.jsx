@@ -1,22 +1,21 @@
 import { useState } from "react";
 import './newpost.css';
 
-export default function NewPost({ posts, setPost }) {
+export default function NewPost({ posts, setPost, user }) {
   const [content, setContent] = useState('');
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
+    if (!content.trim()) return;
+
     const post = {
       id: Date.now(),
       content,
-      //author: 'Elisa_Carstairs',
+      author: user ? user.username : "Anonimo"
     };
 
-    // Agregar el nuevo post al inicio del array
     setPost([post, ...posts]);
-
-    // Limpiar textarea
     setContent('');
   };
 

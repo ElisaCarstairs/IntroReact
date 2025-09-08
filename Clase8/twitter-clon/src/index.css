@@ -1,52 +1,155 @@
+/* BODY */
 body {
-  font-family: Quicksand, sans-serif;
+  font-family: 'Quicksand', sans-serif;
   margin: 0;
   padding: 0;
-  overflow: hidden; /* Evita scroll en el body */
+  overflow: hidden; /* evita scroll en el body */
+  background-color: #f5f5f5;
 }
 
+/* CONTENEDOR PRINCIPAL */
 .main {
   display: flex;
   flex-direction: row;
-  justify-content: center;
-  align-items: stretch;
-  height: 100vh; /* Toda la altura de la ventana */
+  height: 100vh; /* toda la altura de la ventana */
 }
 
 /* LEFT SIDEBAR FIJA */
 .home-leftSideBar {
   width: 250px; /* tamaño fijo */
   background: #fff;
-  border-right: #e5e5e5 solid 1px;
+  border-right: 1px solid #e5e5e5;
   position: sticky; /* se queda fija */
   top: 0;
   height: 100vh;
   padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
 }
 
-/* CONTENIDO Y RIGHT SIDEBAR CON SCROLL OCULTO */
-.home-content,
-.home-rightSideBar {
+/* CONTENIDO CENTRAL */
+.home-content {
+  flex: 1;
+  background-color: #f5f5f5;
+  padding: 20px;
   height: 100vh;
   overflow-y: scroll; /* permite scroll */
   scrollbar-width: none; /* Firefox */
   -ms-overflow-style: none; /* IE y Edge */
 }
 
-.home-content::-webkit-scrollbar,
+.home-content::-webkit-scrollbar {
+  display: none; /* Chrome, Safari */
+}
+
+/* RIGHT SIDEBAR */
+.home-rightSideBar {
+  width: 300px;
+  background: #fafafa;
+  border-left: 1px solid #e5e5e5;
+  padding: 20px;
+  height: 100vh;
+  overflow-y: scroll; /* permite scroll */
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE y Edge */
+}
+
 .home-rightSideBar::-webkit-scrollbar {
   display: none; /* Chrome, Safari */
 }
 
-.home-content {
-  flex: 1;
-  background-color: #f5f5f5;
-  padding: 20px;
+/* AVATAR Y USUARIO */
+.avatar {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  margin-bottom: 12px;
 }
 
-.home-rightSideBar {
-  width: 300px;
-  background: #fafafa;
-  border-left: #e5e5e5 solid 1px;
-  padding: 20px;
+.sidebar-user {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 30px;
+}
+
+.sidebar-user p {
+  font-weight: 600;
+}
+
+/* MENÚ LATERAL */
+.sidebar-menu ul {
+  list-style: none;
+  padding: 0;
+}
+
+.sidebar-menu ul li {
+  padding: 12px 16px;
+  border-radius: 30px;
+  margin-bottom: 10px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.sidebar-menu ul li:hover {
+  background-color: #e8f5fd;
+}
+
+/* BOTÓN TWITTEAR / ACCIONES */
+.sidebar-tweet-button {
+  width: 100%;
+  padding: 12px 0;
+  margin-top: 20px;
+  background-color: #1da1f2;
+  color: white;
+  border: none;
+  border-radius: 30px;
+  font-weight: 700;
+  cursor: pointer;
+  text-align: center;
+  transition: background-color 0.2s;
+}
+
+.sidebar-tweet-button:hover {
+  background-color: #0d8ddb;
+}
+/* SECCIÓN LOGIN ESTILO TWITTER */
+.sidebar-login {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px 0;
+  border-bottom: 1px solid #e5e5e5;
+  margin-bottom: 30px;
+}
+
+.sidebar-login p {
+  font-weight: 600;
+  margin-bottom: 12px;
+}
+
+.sidebar-login input {
+  width: 80%;
+  padding: 8px 12px;
+  margin-bottom: 10px;
+  border-radius: 20px;
+  border: 1px solid #cbc0cc;
+  font-size: 14px;
+}
+
+.sidebar-login button {
+  width: 70%;
+  padding: 8px;
+  border-radius: 20px;
+  border: none;
+  background-color: #1da1f2;
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.sidebar-login button:hover {
+  background-color: #0d8ddb;
 }

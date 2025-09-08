@@ -1,27 +1,37 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
 
-export default function Login({ onLogin }) {
-  const [username, setUsername] = useState("");
-  const navigate = useNavigate();
+export default function Login({ setUser }) {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
-  const handleSubmit = (e) => {
+  const handleLogin = (e) => {
     e.preventDefault();
-    if (!username.trim()) return;
-    onLogin(username); // actualiza App.jsx
-    navigate("/"); // redirige al home
+    if (!email || !password) {
+      alert("Por favor ingresa tus credenciales");
+      return;
+    }
+    // Manteniendo tu lógica de setUser
+    setUser({ email });
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <h2>Iniciar sesión</h2>
-      <input
-        type="text"
-        placeholder="Nombre de usuario"
-        value={username}
-        onChange={(e) => setUsername(e.target.value)}
-      />
-      <button type="submit">Entrar</button>
-    </form>
+    <div className="login-container">
+      <h2>Login</h2>
+      <form onSubmit={handleLogin}>
+        <input
+          type="email"
+          placeholder="Email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+        />
+        <input
+          type="password"
+          placeholder="Contraseña"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+        />
+        <button type="submit">Entrar</button>
+      </form>
+    </div>
   );
 }

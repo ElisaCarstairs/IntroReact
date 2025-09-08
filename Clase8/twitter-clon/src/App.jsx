@@ -1,27 +1,29 @@
-// App.jsx
-import { useState, useEffect } from "react";
-import RoutesIndex from "./Routes.jsx";
+import { useState } from "react";
+import Home from "./Components/Home/Home";
+import Register from "./Pages/Register.jsx";
 
 export default function App() {
   const [user, setUser] = useState(null);
+  const [showRegister, setShowRegister] = useState(false);
 
-  useEffect(() => {
-    const storedUser = localStorage.getItem("user");
-    if (storedUser) setUser(JSON.parse(storedUser));
-  }, []);
-
-  const login = (username) => {
-    const userData = { username };
-    setUser(userData);
-    localStorage.setItem("user", JSON.stringify(userData));
-  };
-
-  const logout = () => {
-    setUser(null);
-    localStorage.removeItem("user");
-  };
+  const login = (username) => setUser({ username });
+  const logout = () => setUser(null);
 
   return (
-    <RoutesIndex user={user} logout={logout} onLogin={login} />
+    <div>
+      {showRegister ? (
+        <Register onRegister={(username) => {
+          login(username);
+          setShowRegister(false);
+        }} />
+      ) : (
+        <Home
+          user={user}
+          login={login}
+          logout={logout}
+          showRegisterForm={() => setShowRegister(true)}
+        />
+      )}
+    </div>
   );
 }
