@@ -28,6 +28,7 @@ export default function Home() {
       <LeftSideBar user={user} login={login} logout={logout} />
       <Content user={user} />
       <RightSideBar />
+
     </div>
   );
 }

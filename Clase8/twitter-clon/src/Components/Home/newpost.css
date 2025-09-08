@@ -1,17 +1,14 @@
 /* ================= LEFT SIDE BAR ================= */
-
-/* Contenedor principal de la barra lateral */
 .left-sidebar {
-  width: 20%; /* tu modificación */
+  width: 20%; /* ancho original que tenías */
   padding: 20px;
   display: flex;
   flex-direction: column;
-  gap: 24px; /* espacio equilibrado entre secciones */
+  gap: 24px;
   background-color: #f8f9fa;
   box-sizing: border-box;
 }
 
-/* Bloque de usuario logueado */
 .sidebar-user {
   display: flex;
   flex-direction: column;
@@ -48,7 +45,6 @@
   background-color: #6d19da;
 }
 
-/* Bloque de login (si no hay usuario) */
 .login-block {
   display: flex;
   flex-direction: column;
@@ -87,7 +83,6 @@
   background-color: #1996da;
 }
 
-/* Menú de navegación */
 .sidebar-menu ul {
   list-style: none;
   padding: 0;
@@ -109,82 +104,149 @@
   color: #1da1f2;
 }
 
-/* ================= CONTENIDO Y POSTS ================= */
+/* ================= RIGHT SIDE BAR ================= */
+.right-sidebar {
+  width: 28%; /* ancho original que tenías */
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  background-color: #f8f9fa;
+  box-sizing: border-box;
+}
 
-/* Estilos para el formulario de nuevo post tipo Twitter */
+/* Secciones de trending y suggested users */
+.right-sidebar h3 {
+  font-size: 16px;
+  font-weight: bold;
+  margin-bottom: 8px;
+}
+
+.right-sidebar ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.right-sidebar li {
+  padding: 6px 12px;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.right-sidebar li:hover {
+  background-color: #e8f5fe;
+  color: #1da1f2;
+}
+
+.right-sidebar .suggested-users li {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.right-sidebar .suggested-users img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}
+
+/* ================= NEW POST ================= */
 .newpost-container {
   display: flex;
   align-items: flex-start;
-  padding: 16px 20px;
+  padding: 16px;
   border-bottom: 1px solid #e6ecf0;
-  background: #fff;
+  background-color: #fff;
+  border-radius: 12px;
+  margin-bottom: 16px;
 }
 
 .newpost-avatar {
   width: 48px;
   height: 48px;
   border-radius: 50%;
-  margin-right: 16px;
   object-fit: cover;
+  margin-right: 12px;
+  border: 2px solid #1da1f2;
 }
 
 .newpost-content {
   flex: 1;
+  display: flex;
+  flex-direction: column;
 }
 
 .newpost-textarea {
   width: 100%;
+  max-width: 95%;  /* Asegura que no sobresalga */
   min-height: 60px;
-  border: none;
-  resize: none;
+  border: 1px solid #e6ecf0;
+  border-radius: 20px;
+  padding: 10px 16px;
   font-size: 16px;
+  line-height: 20px;
   color: #14171a;
-  background: transparent;
   outline: none;
-  margin-bottom: 12px;
+  resize: none;
+  transition: border 0.2s, box-shadow 0.2s;
+}
+
+.newpost-textarea:focus {
+  border-color: #1da1f2;
+  box-shadow: 0 0 0 2px rgba(29,161,242,0.2);
 }
 
 .newpost-actions {
   display: flex;
   justify-content: flex-end;
+  margin-top: 8px;
 }
 
-.newpost-button {
-  background: #1da1f2;
+/* ================= BOTONES UNIFICADOS ================= */
+button {
+  background-color: #1da1f2;
   color: #fff;
   border: none;
   border-radius: 999px;
-  padding: 8px 20px;
+  padding: 8px 16px;
   font-weight: bold;
+  font-size: 14px;
   cursor: pointer;
-  font-size: 15px;
-  transition: background 0.2s;
+  transition: background 0.2s, transform 0.1s;
 }
 
+button:hover:not(:disabled) {
+  background-color: #1991da;
+  transform: scale(1.05);
+}
+
+/* Solo botones deshabilitados */
 .newpost-button:disabled {
-  background: #aab8c2;
+  background-color: #aab8c2;
   cursor: not-allowed;
 }
 
-.newpost-button:hover:not(:disabled) {
-  background: #1991da;
-}
-
-/* --- ESTILOS PARA POST --- */
+/* ================= POSTS ================= */
 .post-container {
   display: flex;
   align-items: flex-start;
   gap: 12px;
-  background: white;
+  background: #fff;
   padding: 16px;
   margin-bottom: 12px;
   border-radius: 12px;
-  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
-  transition: background 0.2s;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+  transition: background 0.2s, box-shadow 0.2s;
 }
 
 .post-container:hover {
-  background: #f5f5f5;
+  background: #f5f8fa;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
 }
 
 .post-avatar {
@@ -200,16 +262,16 @@
 
 .post-header {
   font-weight: bold;
-  margin-bottom: 6px;
-  color: #1c1c1c;
+  margin-bottom: 4px;
+  color: #14171a;
 }
 
 .post-author {
-  color: #1b95e0;
+  color: #1da1f2;
 }
 
 .post-text {
   color: #333;
   font-size: 16px;
-  line-height: 20px;
+  line-height: 22px;
 }
